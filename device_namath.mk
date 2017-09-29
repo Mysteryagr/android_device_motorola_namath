@@ -122,7 +122,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap
+    Camu
 
 # CM14 mtk symbols
 PRODUCT_PACKAGES += \

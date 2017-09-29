@@ -1,0 +1,13 @@
+LOCAL_PATH:= $(call my-dir)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE        := Camu
+LOCAL_MODULE_TAGS   := optional
+LOCAL_MODULE_CLASS  := APPS
+LOCAL_CERTIFICATE   := platform
+LOCAL_MODULE_SUFFIX := .apk
+LOCAL_SRC_FILES     := Camu_1.4.apk
+LOCAL_MODULE_PATH   := $(PRODUCT_OUT)/system/app
+LOCAL_OVERRIDES_PACKAGES := Camera2
+include $(BUILD_PREBUILT)
+
