@@ -121,11 +121,13 @@ PRODUCT_PACKAGES += \
     libfmjni
 
 # Camera
-#PRODUCT_PACKAGES += \
-#    Snap
+PRODUCT_PACKAGES += \
+    Snap \
+    guiext-server
 
 # CM14 mtk symbols
 PRODUCT_PACKAGES += \
+    guiext-server \
     mtk_symbols \
     libmtk_symbols
 
