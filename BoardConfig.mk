@@ -169,20 +169,23 @@ TARGET_RECOVERY_FSTAB := device/motorola/namath/rootdir/recovery.fstab
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # TWRP stuff
+TW_DEVICE_VERSION := Moto C - Mysteryagr
 TW_THEME := portrait_hdpi
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TW_NO_REBOOT_BOOTLOADER := true
 TW_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun%d/file
 TW_MAX_BRIGHTNESS := 255
-TW_EXCLUDE_SUPERSU := true
 TW_INCLUDE_FB2PNG := true
 TW_NO_CPU_TEMP := true
 TW_REBOOT_BOOTLOADER := true
 TW_REBOOT_RECOVERY := true
-TW_HAS_DOWNLOAD_MODE := true
 TW_EXCLUDE_SUPERSU := true
 TW_USE_TOOLBOX := true
+TW_INCLUDE_CRYPTO := true
+
+PRODUCT_COPY_FILES += device/motorola/namath/recovery/root/etc/twrp.fstab:recovery/root/etc/twrp.fstab
+PRODUCT_COPY_FILES += device/motorola/namath/recovery/root/etc/recovery.fstab:recovery/root/etc/recovery.fstab
 
 TARGET_SYSTEM_PROP := device/motorola/namath/system.prop
 TARGET_SPECIFIC_HEADER_PATH := device/motorola/namath/include
