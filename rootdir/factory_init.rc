@@ -501,8 +501,6 @@ on boot
     hostname localhost
     domainname localdomain
 
-    setprop logmuch.detect.value 10000
-
     #INTERNAL_START
     # Start default class, this line is very important!!
     class_start default
@@ -634,7 +632,9 @@ service dualmdlogger /vendor/bin/dualmdlogger
     disabled
     oneshot
 
-service factory_no_image /vendor/bin/factory
+#service factory_no_image /vendor/bin/factory
+service factory_lang /vendor/bin/factory_lang
+    oneshot
 
 service mobile_log_d /vendor/bin/mobile_log_d
 	class main
