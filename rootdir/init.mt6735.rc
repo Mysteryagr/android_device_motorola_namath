@@ -25,6 +25,11 @@ on early-init
     chmod 0755 /sys/kernel/debug
 
 on init
+    # export LD_SHIM_LIBS
+    export LD_PRELOAD "libmtk_symbols.so mtk_symbols.so"
+    export LD_SHIM_LIBS /system/lib/libcamera_client.so|libmtk_symbols.so
+    export LD_SHIM_LIBS /system/vendor/lib/libcam_platform.so|libmtk_symbols.so
+
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
 

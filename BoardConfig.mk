@@ -163,6 +163,7 @@ BOARD_BLUETOOTH_BDROID_HCILP_INCLUDED := 0
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/motorola/namath/bluetooth
 
 TARGET_LDPRELOAD += mtk_symbols.so
+TARGET_LDPRELOAD += libmtk_symbols.so
 
 # CWM
 TARGET_RECOVERY_FSTAB := device/motorola/namath/rootdir/recovery.fstab
