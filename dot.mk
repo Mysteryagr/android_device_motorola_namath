@@ -3,8 +3,8 @@
 # Release name
 PRODUCT_RELEASE_NAME := namath
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit some common DotOS stuff.
+$(call inherit-product, vendor/dot/config/common_full_phone.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/motorola/namath/device_namath.mk)
@@ -15,7 +15,7 @@ DEVICE_RESOLUTION := 480x854
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := namath
-PRODUCT_NAME := lineage_namath
+PRODUCT_NAME := dot_namath
 PRODUCT_BRAND := Motorola
 PRODUCT_MODEL := Moto C
 PRODUCT_MANUFACTURER := Motorola
