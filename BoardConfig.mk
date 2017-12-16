@@ -1,41 +1,16 @@
 # inherit from the proprietary version
 -include vendor/motorola/namath/BoardConfigVendor.mk
 
-
-# Disable NINJA
-#USE_NINJA := false
-
-# Architecture
-FORCE_32_BIT := true
-
 # Platform
 TARGET_BOARD_PLATFORM := mt6737m
 TARGET_NO_BOOTLOADER := true
 
 # Architecture
-ifeq ($(FORCE_32_BIT),true)
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := cortex-a53
-else
-TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a
-TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := cortex-a53
-
-TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv7-a-neon
-TARGET_2ND_CPU_ABI := armeabi-v7a
-TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a53
-
-TARGET_CPU_ABI_LIST_64_BIT := $(TARGET_CPU_ABI)
-TARGET_CPU_ABI_LIST_32_BIT := $(TARGET_2ND_CPU_ABI),$(TARGET_2ND_CPU_ABI2)
-TARGET_CPU_ABI_LIST := $(TARGET_CPU_ABI_LIST_64_BIT),$(TARGET_CPU_ABI_LIST_32_BIT)
-endif
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := mt6737m
@@ -45,24 +20,17 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # Kernel
+ARCH := arm
+TARGET_KERNEL_ARCH := arm
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 TARGET_KERNEL_SOURCE := kernel/motorola/namath
 BOARD_KERNEL_BASE := 0x40000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_RAMDISK_OFFSET := 0x04000000
 BOARD_TAGS_OFFSET := 0xE000000
-ifeq ($(FORCE_32_BIT),true)
-ARCH := arm
-TARGET_KERNEL_ARCH := arm
 TARGET_KERNEL_CONFIG := wt6737m_35_n_defconfig
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,32N2 androidboot.selinux=permissive androidboot.selinux=disabled 
 BOARD_KERNEL_OFFSET := 0x00008000
-else
-TARGET_KERNEL_ARCH := arm64
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive androidboot.selinux=disabled 
-BOARD_KERNEL_OFFSET = 0x00080000
-TARGET_USES_64_BIT_BINDER := true
-endif
 BOARD_MKBOOTIMG_ARGS := --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_TAGS_OFFSET)
 
 # make_ext4fs requires numbers in dec format
@@ -83,9 +51,6 @@ TARGET_CPU_MEMCPY_OPT_DISABLE := true
 # Flags
 BOARD_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 BOARD_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
-#BOARD_GLOBAL_CFLAGS += -DMTK_HARDWARE
-#BOARD_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
-
 
 # Graphics
 BOARD_EGL_CFG := /vendor/motorola/namath/vendor/lib/egl/egl.cfg
@@ -100,7 +65,6 @@ MTK_GPU_VERSION := mali midgard r7p0
 
 # Mediatek support
 BOARD_USES_MTK_HARDWARE:=true
-#DISABLE_ASHMEM_TRACKING := true
 
 # Camera
 USE_CAMERA_STUB := true
@@ -147,7 +111,6 @@ WIFI_DRIVER_STATE_OFF := 0
 
 # Enable Minikin text layout engine (will be the default soon)
 USE_MINIKIN := true
-#MALLOC_IMPL := dlmalloc
 
 # Charger
 BOARD_CHARGER_SHOW_PERCENTAGE := true
@@ -157,8 +120,6 @@ EXTENDED_FONT_FOOTPRINT := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
-#BOARD_HAVE_BLUETOOTH_MTK := true
-#BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := true
 BOARD_BLUETOOTH_BDROID_HCILP_INCLUDED := 0
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/motorola/namath/bluetooth
 
@@ -189,12 +150,7 @@ TARGET_SYSTEM_PROP := device/motorola/namath/system.prop
 TARGET_SPECIFIC_HEADER_PATH := device/motorola/namath/include
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
 
-ifneq ($(FORCE_32_BIT),yes)
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote32
-else
-PRODUCT_COPY_FILES += system/core/rootdir/init.zygote64_32.rc:root/init.zygote64_32.rc
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote64_32
-endif
 
 BOARD_SEPOLICY_DIRS := \
        device/motorola/namath/sepolicy
