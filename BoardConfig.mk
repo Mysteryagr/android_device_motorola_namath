@@ -55,11 +55,11 @@ ifeq ($(FORCE_32_BIT),true)
 ARCH := arm
 TARGET_KERNEL_ARCH := arm
 TARGET_KERNEL_CONFIG := wt6737m_35_n_defconfig
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,32N2 androidboot.selinux=permissive androidboot.selinux=disabled 
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,32N2 androidboot.selinux=permissive 
 BOARD_KERNEL_OFFSET := 0x00008000
 else
 TARGET_KERNEL_ARCH := arm64
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive androidboot.selinux=disabled 
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
 BOARD_KERNEL_OFFSET = 0x00080000
 TARGET_USES_64_BIT_BINDER := true
 endif
