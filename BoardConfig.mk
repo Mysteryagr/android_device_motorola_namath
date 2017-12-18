@@ -99,7 +99,7 @@ MTK_HWC_VERSION := 1.4.1
 MTK_GPU_VERSION := mali midgard r7p0
 
 # Mediatek support
-BOARD_USES_MTK_HARDWARE:=true
+BOARD_USES_MTK_HARDWARE := true
 #DISABLE_ASHMEM_TRACKING := true
 
 # Camera
