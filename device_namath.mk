@@ -121,8 +121,8 @@ PRODUCT_PACKAGES += \
     libfmjni
 
 # Camera
-PRODUCT_PACKAGES += \
-    Snap
+#PRODUCT_PACKAGES += \
+#    Snap
 
 # CM14 mtk symbols
 PRODUCT_PACKAGES += \
