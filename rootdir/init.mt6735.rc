@@ -7,6 +7,8 @@ on early-init
     # Turn off backlight on blank
     write /sys/class/leds/lcd-backlight/trigger "backlight"
     export LD_SHIM_LIBS "/system/vendor/lib/libcam_utils.so|/system/lib/mtk_symbols.so:/system/vendor/lib/libcam.utils.sensorlistener.so|/system/lib/libsensor.so:/system/vendor/lib/libcam.camadapter.so|/system/lib/libcamera1_client.so"
+    export LD_SHIM_LIBS /system/lib/libcamera_client.so|libmtk_symbols.so
+    export LD_SHIM_LIBS /system/vendor/lib/libcam_platform.so|libmtk_symbols.so
 
     # BATTERY proc
     chown shell system /proc/mtk_battery_cmd/current_cmd
@@ -470,7 +472,7 @@ on post-fs-data
     chmod 0660 /dev/kd_camera_flashlight
     chmod 0660 /dev/kd_camera_hw_bus2
     chmod 0660 /dev/FM50AF
-   chmod 0660 /dev/CAM_CAL_DRV
+    chmod 0660 /dev/CAM_CAL_DRV
 
     chown system camera /dev/camera-sysram
     chown system camera /dev/camera-isp
