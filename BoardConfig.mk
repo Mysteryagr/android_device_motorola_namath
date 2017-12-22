@@ -9,8 +9,10 @@
 FORCE_32_BIT := true
 
 # Platform
-TARGET_BOARD_PLATFORM := mt6737m
+MTK_BOARD_PLATFORMS += mt6737m
 TARGET_NO_BOOTLOADER := true
+TARGET_NO_FACTORYIMAGE := true
+TARGET_BOOTLOADER_BOARD_NAME := mt6737m
 
 # Architecture
 ifeq ($(FORCE_32_BIT),true)
@@ -41,8 +43,11 @@ endif
 TARGET_BOOTLOADER_BOARD_NAME := mt6737m
 
 # Recovery
+BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
-BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+TARGET_USERIMAGES_USE_F2FS := true
+TARGET_KERNEL_HAVE_EXFAT := true
+TARGET_KERNEL_HAVE_NTFS := true
 
 # Kernel
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
@@ -53,6 +58,8 @@ BOARD_RAMDISK_OFFSET := 0x04000000
 BOARD_TAGS_OFFSET := 0xE000000
 ifeq ($(FORCE_32_BIT),true)
 ARCH := arm
+TARGET_ARCH := arm
+KERNEL_ARCH := arm
 TARGET_KERNEL_ARCH := arm
 TARGET_KERNEL_CONFIG := wt6737m_35_n_defconfig
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,32N2 androidboot.selinux=permissive 
@@ -89,14 +96,15 @@ BOARD_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 
 # Graphics
 BOARD_EGL_CFG := /vendor/motorola/namath/vendor/lib/egl/egl.cfg
-BOARD_EGL_WORKAROUND_BUG_10194508 := true
 USE_OPENGL_RENDERER := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
+PRESENT_TIME_OFFSET_FROM_VSYNC_NS := 0
 MTK_HWC_SUPPORT := yes
 MTK_HWC_VERSION := 1.4.1
-MTK_GPU_VERSION := mali midgard r7p0
+MTK_GPU_VERSION := mali midgard r12p1
+OVERRIDE_RS_DRIVER := libRSDriver_mtk.so
 
 # Mediatek support
 BOARD_USES_MTK_HARDWARE := true
@@ -113,11 +121,11 @@ TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 BOARD_USES_MTK_AUDIO := true
 
 # CMHW
-BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS := device/motorola/namath/cmhw
+#BOARD_USES_CYANOGEN_HARDWARE := true
+#BOARD_HARDWARE_CLASS := device/motorola/namath/cmhw
 
 # Fix video autoscaling on old OMX decoders
-TARGET_OMX_LEGACY_RESCALING := true
+#TARGET_OMX_LEGACY_RESCALING := true
 
 # Charger
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
@@ -189,15 +197,11 @@ TARGET_SYSTEM_PROP := device/motorola/namath/system.prop
 TARGET_SPECIFIC_HEADER_PATH := device/motorola/namath/include
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
 
-ifneq ($(FORCE_32_BIT),yes)
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote32
-else
-PRODUCT_COPY_FILES += system/core/rootdir/init.zygote64_32.rc:root/init.zygote64_32.rc
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote64_32
-endif
-
 BOARD_SEPOLICY_DIRS := \
        device/motorola/namath/sepolicy
 
 # Seccomp filter
 BOARD_SECCOMP_POLICY += device/motorola/namath/seccomp
+
+#HIDL
+DEVICE_MANIFEST_FILE := device/moto/namath/hidl/manifest.xml
