@@ -203,4 +203,4 @@ BOARD_SEPOLICY_DIRS := \
 BOARD_SECCOMP_POLICY += device/motorola/namath/seccomp
 
 #HIDL
-DEVICE_MANIFEST_FILE := device/moto/namath/hidl/manifest.xml
+DEVICE_MANIFEST_FILE := device/motorola/namath/hidl/manifest.xml
