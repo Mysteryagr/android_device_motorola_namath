@@ -4,7 +4,7 @@
 PRODUCT_RELEASE_NAME := namath
 
 # Inherit some common aicp stuff.
-$(call inherit-product, vendor/aicp/config/common_full_phone.mk)
+$(call inherit-product, vendor/aicp/configs/telephony.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/motorola/namath/device_namath.mk)
@@ -15,7 +15,7 @@ DEVICE_RESOLUTION := 480x854
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := namath
-PRODUCT_NAME := lineage_namath
+PRODUCT_NAME := aicp_namath
 PRODUCT_BRAND := Motorola
 PRODUCT_MODEL := Moto C
 PRODUCT_MANUFACTURER := Motorola
