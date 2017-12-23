@@ -944,7 +944,7 @@ on property:service.pppoe_wlan0.enable=1
 service DMAgent /vendor/bin/dm_agent_binder
     class main
     user root
-	grooup root system cache
+	group root system cache
 
 service PPLAgent /vendor/bin/ppl_agent
     class main
