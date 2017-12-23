@@ -122,10 +122,12 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap
+    Snap \
+    guiext-server
 
 # CM14 mtk symbols
 PRODUCT_PACKAGES += \
+    guiext-server \
     mtk_symbols \
     libmtk_symbols
 
