@@ -728,7 +728,7 @@ index 096f7ef..64152dd 100644
  
      // Returns the number of frames per audio HAL buffer.
      virtual size_t frameCountHAL(audio_io_handle_t ioHandle) const = 0;
-+    
++
 +    // get EM parameter
 +    virtual status_t GetEMParameter(void *ptr, size_t len) = 0;
 +    virtual status_t SetEMParameter(void *ptr, size_t len) = 0;
@@ -747,7 +747,7 @@ index 06bf4b8..06b40d2 100644
     // Check if offload is possible for given format, stream type, sample rate,
      // bit rate, duration, video and streaming or offload property is enabled
      virtual bool isOffloadSupported(const audio_offload_info_t& info) = 0;
-+    
++
 +    virtual status_t SetPolicyManagerParameters(int par1,int par2 ,int par3,int par4) = 0;
  
      /* List available audio ports and their attributes */
@@ -1930,7 +1930,7 @@ index 2dd1611..05fc3e9 100644
              return status;
          }
 -
-+        
++
 +#ifdef MTK_HARDWARE
 +        case SET_POLICYMANAGER_PARAMETERS: {
 +            CHECK_INTERFACE(IAudioPolicyService, data, reply);
@@ -7161,7 +7161,7 @@ index a417754..e50dbd6 100644
  public:
      static const char* getServiceName() ANDROID_API { return "media.audio_flinger"; }
 -
-+    
++
 +// add to EM mode setting
 +#ifdef MTK_HARDWARE
 +    virtual status_t GetEMParameter(void *ptr, size_t len);
@@ -7270,7 +7270,7 @@ index 2d7cbdd..5f6b23d 100644
                      const struct audio_config_base *deviceConfig,
                      audio_patch_handle_t patchHandle) = 0;
      virtual void onOutputSessionEffectsUpdate(sp<AudioSessionInfo>& streamInfo, bool added) = 0;
-+    
++
 +    virtual status_t getCustomAudioVolume(void* pCustomVol) = 0;
  
  };

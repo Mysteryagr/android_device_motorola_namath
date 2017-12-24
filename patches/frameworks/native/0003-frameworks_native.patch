@@ -416,7 +416,7 @@ index 0889aaf..718282d 100644
  	SurfaceControl.cpp \
  	SurfaceComposerClient.cpp \
  	SyncFeatures.cpp \
-+	
++
 +ifndef MTK_HARDWARE
 +LOCAL_SRC_FILES += \
 +	GraphicsEnv.cpp
@@ -615,7 +615,7 @@ index 2b16365..d4436bc 100644
  	libsync \
  	libutils \
  	liblog
-+	
++
 +ifeq ($(BOARD_USES_MTK_HARDWARE),true)
 +LOCAL_CFLAGS += -DMTK_HARDWARE
 +	LOCAL_CPPFLAGS += -Wno-extra-semi -Wno-zero-length-array -Wno-gnu-statement-expression
