@@ -7311,7 +7311,7 @@ index 846fa48..8c40a26 100755
      virtual IVolumeCurvesCollection &getVolumeCurves() = 0;
  
      virtual const sp<DeviceDescriptor> &getDefaultOutputDevice() const = 0;
-+    
++
 +    virtual AudioPolicyVendorControl &getAudioPolicyVendorControl() = 0;
  
  protected:
@@ -7324,7 +7324,7 @@ index 543b82b..f53e711 100755
      libcutils \
      libutils \
      libaudioutils \
-+    
++
 +ifeq ($(BOARD_USES_MTK_HARDWARE),true)
 +LOCAL_CFLAGS += -DMTK_HARDWARE
 +
@@ -7347,7 +7347,7 @@ index 6db66b0..a0cb006 100755
 +        AudioPolicyVendorControl &mAudioPolicyVendorControl = mApmObserver->getAudioPolicyVendorControl();
 +        mAudioPolicyVendorControl.setVoiceReplaceDTMFStatus(true);
 +#endif
-+                                                          
++
      } else if (is_state_in_call(oldState) && !is_state_in_call(state)) {
          ALOGV("  Exiting call in setPhoneState()");
          mApmObserver->getVolumeCurves().restoreOriginVolumeCurve(AUDIO_STREAM_DTMF);
@@ -7370,7 +7370,7 @@ index 8c39f78..4ca2b93 100644
 +#include <AudioPolicyParameters.h>
  
  namespace android {
-+    
++
 +// mtk start
 +#ifndef VOICE_VOLUME_MAX
 +#define VOICE_VOLUME_MAX       (160)
@@ -7979,7 +7979,7 @@ index fec95cc..c66377f 100644
          virtual audio_unique_id_t newAudioUniqueId(audio_unique_id_use_t use);
  
          virtual void onOutputSessionEffectsUpdate(sp<AudioSessionInfo>& info, bool added);
-+        
++
 +        virtual status_t getCustomAudioVolume(void* pCustomVol);
  
  
