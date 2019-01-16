@@ -12,6 +12,3 @@ cd ../..
 cd system/netd
 git apply -v ../../device/motorola/namath/patches/0004-system_netd.patch
 cd ../..
-cd system/core
-git apply -v ../../device/motorola/namath/patches/0005-system_core.patch
-cd ../..
