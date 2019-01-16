@@ -3,11 +3,14 @@
 # Release name
 PRODUCT_RELEASE_NAME := namath
 
-# Inherit some common ViperOS stuff.
-$(call inherit-product, vendor/viper/config/common_full_phone.mk)
+# Get the prebuilt list of APNs
+$(call inherit-product, vendor/omni/config/gsm.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/motorola/namath/device_namath.mk)
+
+# Inherit from our custom product configuration
+$(call inherit-product, vendor/omni/config/common.mk)
 
 TARGET_SCREEN_HEIGHT := 854
 TARGET_SCREEN_WIDTH := 480
@@ -15,7 +18,7 @@ DEVICE_RESOLUTION := 480x854
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := namath
-PRODUCT_NAME := viper_namath
+PRODUCT_NAME := omni_namath
 PRODUCT_BRAND := Motorola
 PRODUCT_MODEL := Moto C
 PRODUCT_MANUFACTURER := Motorola
