@@ -7,7 +7,7 @@ PRODUCT_RELEASE_NAME := namath
 $(call inherit-product, vendor/omni/config/gsm.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/motorola/namath/device_namath.mk)
+$(call inherit-product, device/motorola/namath/omni_namath.mk)
 
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
